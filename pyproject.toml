@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "mecab-parallel-experiment"
+version = "0.1.0"
+description = ""
+authors = ["hppRC <hpp.ricecake@gmail.com>"]
+readme = "README.md"
+packages = [{include = "mecab_parallel_experiment"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+more-itertools = "^9.0.0"
+mecab-python3 = "^1.0.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
