@@ -50,9 +50,12 @@ def main():
         chunks.append((start, file_size))
 
     with Pool(processes=num_procs) as pool:
-        paths = [f'"{path}"' for path in pool.starmap(run, chunks)]
-        cmd = f"cat {' '.join(paths)} > {OUT}"
+        paths = list(pool.starmap(run, chunks))
+        paths_cat = [f'"{path}"' for path in paths]
+        cmd = f"cat {' '.join(paths_cat)} > {OUT}"
         subprocess.call(cmd, shell=True)
+        for path in paths:
+            os.remove(path)
 
 
 if __name__ == "__main__":

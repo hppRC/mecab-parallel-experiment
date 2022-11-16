@@ -1,30 +1,19 @@
-===> multitime results
-1: poetry run python naive.py
-            Mean        Std.Dev.    Min         Median      Max
-real        138.586     3.114       133.686     140.614     141.579     
-user        133.203     2.603       129.075     133.822     136.283     
-sys         2.691       0.177       2.514       2.583       2.953       
-===> multitime results
-1: poetry run python serial_read.py
-            Mean        Std.Dev.    Min         Median      Max
-real        35.818      0.632       34.848      36.241      36.462      
-user        160.009     1.626       158.174     159.800     162.435     
-sys         15.077      0.504       14.367      15.242      15.765      
-===> multitime results
-1: poetry run python parallel_read.py
-            Mean        Std.Dev.    Min         Median      Max
-real        29.822      0.770       28.976      29.667      31.151      
-user        159.936     1.804       158.236     158.893     162.358     
-sys         9.032       0.362       8.543       9.017       9.653       
-===> multitime results
-1: poetry run python parallel_read_write.py
-            Mean        Std.Dev.    Min         Median      Max
-real        17.747      0.344       17.221      17.927      18.125      
-user        152.405     0.672       151.822     151.888     153.283     
-sys         4.163       0.111       3.948       4.226       4.241       
-===> multitime results
-1: poetry run python parallel_read_write_at_once.py
-            Mean        Std.Dev.    Min         Median      Max
-real        18.628      1.057       17.366      18.556      20.457      
-user        146.779     1.893       143.956     146.676     149.248     
-sys         4.340       0.124       4.182       4.277       4.499   
+| M1 MacBook pro (10 cores)   | mean    | std   | min     | median  | max     | improvement |
+| --------------------------- | ------- | ----- | ------- | ------- | ------- | ----------- |
+| naive                       | 162.568 | 0.895 | 161.700 | 162.386 | 164.721 | x1.000      |
+| serial_read                 | 42.620  | 0.620 | 42.148  | 42.428  | 44.357  | x3.814      |
+| parallel_read               | 35.527  | 0.106 | 35.345  | 35.511  | 35.732  | x4.576      |
+| parallel_read_write         | 20.826  | 0.255 | 20.598  | 20.732  | 21.523  | x7.806      |
+| parallel_read_write_at_once | 20.678  | 0.146 | 20.493  | 20.645  | 21.036  | x7.862      |
+
+
+
+
+| Ubuntu Server (40 cores, NFS) | mean    | std     | min     | median  | max     | improvement |
+| ----------------------------- | ------- | ------- | ------- | ------- | ------- | ----------- |
+| naive                         | 444.190 | 47.739  | 404.738 | 429.977 | 579.257 | x1.000      |
+| serial_read                   | 350.161 | 207.625 | 139.832 | 276.194 | 749.342 | x1.269      |
+| parallel_read                 | 278.844 | 229.585 | 61.472  | 179.473 | 719.069 | x1.593      |
+| parallel_read_write           | 52.463  | 2.525   | 49.139  | 51.760  | 56.053  | x8.467      |
+| parallel_read_write_at_once   | 56.320  | 11.061  | 46.864  | 52.601  | 82.210  | x7.887      |
+

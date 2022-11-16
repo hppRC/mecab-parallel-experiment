@@ -100,6 +100,9 @@ def process_file_parallel_and_save(
             (input_path, fn, start, end)
             for start, end in generate_file_chunks(input_path, num_chunks=num_procs)
         ]
-        paths = [f'"{path}"' for path in pool.starmap(run_and_save, chunks)]
-        cmd = f"cat {' '.join(paths)} > {output_path}"
+        paths = list(pool.starmap(run_and_save, chunks))
+        paths_cat = [f'"{path}"' for path in paths]
+        cmd = f"cat {' '.join(paths_cat)} > {str(output_path)}"
         subprocess.call(cmd, shell=True)
+        for path in paths:
+            os.remove(path)
